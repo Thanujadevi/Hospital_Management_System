@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients | LifeCare HMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-logo">LifeCare HMS</div>
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="patients.html" class="nav-item active" data-role="Admin,Receptionist">Patients</a>
+            <a href="doctors.html" class="nav-item">Doctors</a>
+            <a href="appointments.html" class="nav-item">Appointments</a>
+            <a href="treatments.html" class="nav-item" data-role="Admin,Doctor">Treatments</a>
+            <a href="prescriptions.html" class="nav-item" data-role="Admin,Doctor">Prescriptions</a>
+            <a href="medicines.html" class="nav-item" data-role="Admin,Receptionist">Medicines</a>
+            <a href="billing.html" class="nav-item" data-role="Admin,Receptionist">Billing</a>
+            <a href="reports.html" class="nav-item" data-role="Admin">Reports</a>
+            <a href="#" onclick="logout()" class="nav-item" style="margin-top: auto; color: var(--danger);">Logout</a>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Patient Management</h1>
+                <button class="btn" style="width: auto;" onclick="openModal()">+ Register Patient</button>
+            </header>
+
+            <div class="table-container">
+                <div style="padding: 1rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: flex-end;">
+                    <input type="text" id="patientSearch" placeholder="Search by name or phone..." style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; width: 300px;">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Phone</th>
+                            <th>Blood Group</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patients-table"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="patientModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Register Patient</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="patientForm">
+                <input type="hidden" id="patientId">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="patientName" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" id="patientAge" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select id="patientGender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" id="patientPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Blood Group</label>
+                        <input type="text" id="patientBlood" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea id="patientAddress" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn">Save Patient</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/patients.js"></script>
+</body>
+</html>

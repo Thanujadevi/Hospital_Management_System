@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | LifeCare HMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-logo">LifeCare HMS</div>
+            <a href="dashboard.html" class="nav-item active">Dashboard</a>
+            <a href="patients.html" class="nav-item" data-role="Admin,Receptionist">Patients</a>
+            <a href="doctors.html" class="nav-item">Doctors</a>
+            <a href="appointments.html" class="nav-item">Appointments</a>
+            <a href="treatments.html" class="nav-item" data-role="Admin,Doctor">Treatments</a>
+            <a href="prescriptions.html" class="nav-item" data-role="Admin,Doctor">Prescriptions</a>
+            <a href="medicines.html" class="nav-item" data-role="Admin,Receptionist">Medicines</a>
+            <a href="billing.html" class="nav-item" data-role="Admin,Receptionist">Billing</a>
+            <a href="reports.html" class="nav-item" data-role="Admin">Reports</a>
+            <a href="#" onclick="logout()" class="nav-item" style="margin-top: auto; color: var(--danger);">Logout</a>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <div>
+                    <h1>Welcome, <span id="username-display">User</span></h1>
+                    <p style="color: var(--text-grey);">Here's what's happening today.</p>
+                </div>
+                <div>
+                    <button class="btn" style="width: auto; padding: 0.5rem 1rem;" data-role="Admin,Receptionist" onclick="window.location.href='appointments.html'">New Appointment</button>
+                </div>
+            </header>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Total Patients</span>
+                    <span class="stat-value" id="stat-patients">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Total Doctors</span>
+                    <span class="stat-value" id="stat-doctors">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Today's Appointments</span>
+                    <span class="stat-value" id="stat-appointments">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Total Revenue (₹)</span>
+                    <span class="stat-value" id="stat-revenue">₹0</span>
+                </div>
+            </div>
+
+            <!-- Dashboard Charts & Tables -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+                <div class="table-container" style="padding: 1.5rem;">
+                    <h3>Monthly Revenue Trend</h3>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="table-container" style="padding: 1.5rem;">
+                    <h3>Appointment Status</h3>
+                    <canvas id="statusChart"></canvas>
+                </div>
+            </div>
+
+            <div class="table-container" style="margin-top: 2rem;">
+                <div style="padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                    <h3>Recent Patient Registrations</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Reg. Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recent-patients-table">
+                        <!-- Loaded via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "ignore": [
+    "hospital.db",
+    "hospital.db-journal",
+    "public/*"
+  ],
+  "ext": "js,json,html,css"
+}

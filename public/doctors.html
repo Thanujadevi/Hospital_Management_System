@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors | LifeCare HMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-logo">LifeCare HMS</div>
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="patients.html" class="nav-item" data-role="Admin,Receptionist">Patients</a>
+            <a href="doctors.html" class="nav-item active">Doctors</a>
+            <a href="appointments.html" class="nav-item">Appointments</a>
+            <a href="treatments.html" class="nav-item" data-role="Admin,Doctor">Treatments</a>
+            <a href="prescriptions.html" class="nav-item" data-role="Admin,Doctor">Prescriptions</a>
+            <a href="medicines.html" class="nav-item" data-role="Admin,Receptionist">Medicines</a>
+            <a href="billing.html" class="nav-item" data-role="Admin,Receptionist">Billing</a>
+            <a href="reports.html" class="nav-item" data-role="Admin">Reports</a>
+            <a href="#" onclick="logout()" class="nav-item" style="margin-top: auto; color: var(--danger);">Logout</a>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Doctors Directory</h1>
+                <button class="btn" style="width: auto;" data-role="Admin" onclick="openModal()">+ Add Doctor</button>
+            </header>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Specialization</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Available Days</th>
+                            <th data-role="Admin">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="doctors-table"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="doctorModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Doctor</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="doctorForm">
+                <input type="hidden" id="doctorId">
+                <div class="form-group">
+                    <label>Doctor Name</label>
+                    <input type="text" id="doctorName" required>
+                </div>
+                <div class="form-group">
+                    <label>Specialization</label>
+                    <input type="text" id="doctorSpecialization" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" id="doctorPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="doctorEmail" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Available Days (e.g. Mon, Wed, Fri)</label>
+                    <input type="text" id="doctorDays" required>
+                </div>
+                <button type="submit" class="btn">Save Doctor</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/doctors.js"></script>
+</body>
+</html>

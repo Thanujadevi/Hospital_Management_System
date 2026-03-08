@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescriptions | LifeCare HMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-logo">LifeCare HMS</div>
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="patients.html" class="nav-item" data-role="Admin,Receptionist">Patients</a>
+            <a href="doctors.html" class="nav-item">Doctors</a>
+            <a href="appointments.html" class="nav-item">Appointments</a>
+            <a href="treatments.html" class="nav-item" data-role="Admin,Doctor">Treatments</a>
+            <a href="prescriptions.html" class="nav-item active" data-role="Admin,Doctor">Prescriptions</a>
+            <a href="medicines.html" class="nav-item" data-role="Admin,Receptionist">Medicines</a>
+            <a href="billing.html" class="nav-item" data-role="Admin,Receptionist">Billing</a>
+            <a href="reports.html" class="nav-item" data-role="Admin">Reports</a>
+            <a href="#" onclick="logout()" class="nav-item" style="margin-top: auto; color: var(--danger);">Logout</a>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Prescriptions</h1>
+                <button class="btn" style="width: auto;" onclick="openModal()">+ New Prescription</button>
+            </header>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Medicine</th>
+                            <th>Dosage</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody id="prescriptions-table"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="prescriptionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Prescription</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="prescriptionForm">
+                <div class="form-group">
+                    <label>Select Patient</label>
+                    <select id="patientId" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Select Doctor</label>
+                    <select id="doctorId" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Select Medicine</label>
+                    <select id="medicineId" required></select>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Dosage</label>
+                        <input type="text" id="dosage" placeholder="e.g. 1-0-1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Duration</label>
+                        <input type="text" id="duration" placeholder="e.g. 5 days" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Create Prescription</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/prescriptions.js"></script>
+</body>
+</html>

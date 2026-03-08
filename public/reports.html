@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | LifeCare HMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-logo">LifeCare HMS</div>
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="patients.html" class="nav-item" data-role="Admin,Receptionist">Patients</a>
+            <a href="doctors.html" class="nav-item">Doctors</a>
+            <a href="appointments.html" class="nav-item">Appointments</a>
+            <a href="treatments.html" class="nav-item" data-role="Admin,Doctor">Treatments</a>
+            <a href="prescriptions.html" class="nav-item" data-role="Admin,Doctor">Prescriptions</a>
+            <a href="medicines.html" class="nav-item" data-role="Admin,Receptionist">Medicines</a>
+            <a href="billing.html" class="nav-item" data-role="Admin,Receptionist">Billing</a>
+            <a href="reports.html" class="nav-item active" data-role="Admin">Reports</a>
+            <a href="#" onclick="logout()" class="nav-item" style="margin-top: auto; color: var(--danger);">Logout</a>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Hospital Analytics Reports</h1>
+            </header>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Total Revenue</span>
+                    <span class="stat-value" id="report-revenue">₹0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Total Patients</span>
+                    <span class="stat-value" id="report-patients">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Active Doctors</span>
+                    <span class="stat-value" id="report-doctors">0</span>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                <div class="table-container" style="padding: 1.5rem;">
+                    <h3>Patient Registrations (Last 30 Days)</h3>
+                    <canvas id="regChart"></canvas>
+                </div>
+                <div class="table-container" style="padding: 1.5rem;">
+                    <h3>Monthly Financial Growth (Paid Invoices)</h3>
+                    <canvas id="financeChart"></canvas>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                <div class="table-container" style="padding: 1.5rem;">
+                    <h3>Doctor Workload Distribution</h3>
+                    <canvas id="workloadChart"></canvas>
+                </div>
+                <div class="table-container" style="padding: 1.5rem;">
+                    <h3>Appointment Status Summary</h3>
+                    <canvas id="appointmentChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/reports.js"></script>
+</body>
+</html>
